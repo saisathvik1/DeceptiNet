@@ -4,7 +4,7 @@ import os
 
 def ftp_honeypot():
     host = "0.0.0.0"  # Listen on all available interfaces
-    port = 21         # FTP port
+    port = 21         # FTP port, can be changed if needed.
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
         server.bind((host, port))
@@ -19,7 +19,7 @@ def ftp_honeypot():
             current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             log_message = f"[{current_time}] Connection from {client_address[0]}:{client_address[1]}"
 
-            client_socket.send(b"220 (vsFTPd 2.3.4)\r\n")  # Modify the banner here
+            client_socket.send(b"220 (vsFTPd 2.3.4)\r\n")  # You can modify based on your needs.
 
             while True:
                 data = client_socket.recv(1024).decode().strip()
@@ -34,8 +34,6 @@ def ftp_honeypot():
                     client_socket.send(b"331 Please specify the password.\r\n")
                 elif "PASS" in data:
                     client_socket.send(b"230 Login successful.\r\n")
-
-                # ... rest of your code ...
 
             # Log every connection attempt
             if not os.path.exists("ftp_log.log"):
