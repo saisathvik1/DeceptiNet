@@ -1,6 +1,5 @@
-# DeceptiNet
-DeceptiNet leverages emulated network services as honeypots for proactive threat detection and analysis.
------------------------------
+> DeceptiNet leverages emulated network services as honeypots for proactive threat detection and analysis.
+
 ## Version 1 : Shows service as vulnerable and logs the information.
 Things to add:
 1. Other services like HTTP/S(login form)
